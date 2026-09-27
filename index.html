@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Voyager Chat</title>
+    <title>Voyager</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -13,119 +13,68 @@
     <div class="app-shell">
       <aside class="sidebar">
         <div class="brand-row">
-          <div class="brand">ChatGPT</div>
-          <div class="brand-icons">
-            <button class="icon-button" aria-label="Search">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 015.8 12.8l4.7 4.7 1.4-1.4-4.7-4.7A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/></svg>
-            </button>
-            <button class="icon-button" aria-label="New conversation">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
-            </button>
-          </div>
+          <div class="brand-mark">V</div>
+          <div class="brand">Voyager</div>
+          <button class="collapse-button" aria-label="Collapse sidebar">‹</button>
         </div>
 
-        <nav class="nav-group primary-nav">
-          <button class="nav-item active" data-action="new-chat">
-            <span class="nav-icon">✦</span>
-            <span>New chat</span>
-          </button>
-          <button class="nav-item">
-            <span class="nav-icon">◌</span>
-            <span>Images</span>
-          </button>
-          <button class="nav-item">
-            <span class="nav-icon">▣</span>
-            <span>Library</span>
-          </button>
-          <button class="nav-item">
-            <span class="nav-icon">◫</span>
-            <span>Scheduled</span>
-          </button>
-          <button class="nav-item">
-            <span class="nav-icon">◍</span>
-            <span>Plugins</span>
-          </button>
-          <button class="nav-item">
-            <span class="nav-icon">◔</span>
-            <span>Health</span>
-          </button>
-          <button class="nav-item more-item">
-            <span class="nav-icon">•••</span>
-            <span>More</span>
-          </button>
+        <button class="start-button" data-action="new-chat"><span>＋</span> Start a journey</button>
+
+        <nav class="nav-group primary-nav" aria-label="Main navigation">
+          <button class="nav-item active"><span class="nav-icon">⌂</span><span>Overview</span></button>
+          <button class="nav-item"><span class="nav-icon">◇</span><span>Discover</span></button>
+          <button class="nav-item"><span class="nav-icon">▤</span><span>Knowledge base</span></button>
+          <button class="nav-item"><span class="nav-icon">↗</span><span>Automations</span></button>
+          <button class="nav-item"><span class="nav-icon">⌘</span><span>Connections</span></button>
         </nav>
 
         <div class="sidebar-section">
-          <div class="section-label">Pinned</div>
-          <button class="nav-item small">
-            <span class="nav-icon">▣</span>
-            <span>Maxpri Website</span>
-          </button>
-        </div>
-
-        <div class="sidebar-section">
-          <div class="section-label">Projects</div>
-          <button class="nav-item small">
-            <span class="nav-icon">▣</span>
-            <span>FTC Code</span>
-          </button>
-          <button class="nav-item small">
-            <span class="nav-icon">▣</span>
-            <span>YouTube Channel</span>
-          </button>
-          <button class="nav-item small">
-            <span class="nav-icon">▣</span>
-            <span>Maxpri Website Hosting plan</span>
-          </button>
+          <div class="section-label">Workspaces</div>
+          <button class="nav-item small"><span class="workspace-dot purple"></span><span>Personal lab</span></button>
+          <button class="nav-item small"><span class="workspace-dot orange"></span><span>Product studio</span></button>
         </div>
 
         <div class="sidebar-section chats-section">
-          <div class="section-label">Chats</div>
+          <div class="section-label">Recent journeys</div>
           <div id="chatList" class="chat-list"></div>
         </div>
 
         <div class="user-card">
           <div class="profile-round">D</div>
-          <div class="profile-meta">
-            <span class="name">Daniel Aron</span>
-            <span class="plan">Free</span>
-          </div>
-          <button class="upgrade-btn">Upgrade</button>
+          <div class="profile-meta"><span class="name">Daniel Aron</span><span class="plan">Personal plan</span></div>
+          <button class="icon-button" aria-label="Account menu">•••</button>
         </div>
       </aside>
 
       <main class="main-panel">
         <header class="topbar">
-          <div class="mode-switch" aria-label="Mode switcher">
-            <button class="mode-button active" data-mode="ask">Chat</button>
-            <button class="mode-button" data-mode="agent">Work</button>
+          <div class="mode-switch" aria-label="Voyager mode switcher">
+            <button class="mode-button active" data-mode="ask">Ask</button>
+            <button class="mode-button" data-mode="agent">Agent</button>
           </div>
-
           <div class="top-actions">
-            <button class="ghost-button">Upgrade</button>
-            <button class="icon-button" id="settingsButton" aria-label="API settings">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.31.06-.62.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 00.12-.64l-1.92-3.32a.5.5 0 00-.61-.18l-2.39.96a7.3 7.3 0 00-1.63-.94L14.3 2.5a.5.5 0 00-.5-.5h-3.6a.5.5 0 00-.5.5l-.38 2.52c-.58.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 00-.61.18L2.71 8.84a.5.5 0 00.12.64l2.03 1.58c-.04.31-.06.62-.06.94s.02.63.06.94L2.83 14.52a.5.5 0 00-.12.64l1.92 3.32a.5.5 0 00.61.18l2.39-.96c.51.4 1.05.71 1.63.94l.38 2.52a.5.5 0 00.5.5h3.6a.5.5 0 00.5-.5l.38-2.52c.58-.23 1.12-.54 1.63-.94l2.39.96a.5.5 0 00.61-.18l1.92-3.32a.5.5 0 00-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1112 8a3.5 3.5 0 010 7.5z"/></svg>
-            </button>
+            <span class="workspace-status"><span class="status-dot"></span> Personal lab</span>
+            <button class="icon-button" id="settingsButton" aria-label="API settings">⚙</button>
           </div>
         </header>
 
         <div class="main-content" id="mainContent">
           <div id="messages" class="messages"></div>
           <div id="emptyState" class="empty-state">
-            <h1>Where should we begin?</h1>
+            <div class="welcome-kicker">YOUR AI COMPANION</div>
+            <h1>What are you exploring?</h1>
+            <p>Ask a question or hand off a multi-step task to Voyager.</p>
           </div>
         </div>
 
         <div class="composer-shell">
           <div class="composer">
             <button class="plus-button" aria-label="Add content">＋</button>
-            <textarea id="promptInput" rows="1" placeholder="Ask anything"></textarea>
+            <textarea id="promptInput" rows="1" placeholder="Ask Voyager anything"></textarea>
             <div class="composer-tools">
-              <button class="tool-button" type="button">Think</button>
-              <button class="tool-button" type="button">✦</button>
-              <button class="tool-button send-button" id="sendButton" type="button" aria-label="Send prompt">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5V3.5l18 8.5-18 8.5zm2-2.2l12.5-6.3L5 5.7v4.6l6 1.2-6 1.2v4.6z"/></svg>
-              </button>
+              <button class="tool-button" type="button">Attach</button>
+              <button class="tool-button" type="button">⌁</button>
+              <button class="tool-button send-button" id="sendButton" type="button" aria-label="Send prompt">↑</button>
             </div>
           </div>
         </div>
@@ -134,33 +83,13 @@
 
     <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
       <div class="modal-card">
-        <div class="modal-header">
-          <h2 id="settingsTitle">API settings</h2>
-          <button id="closeSettings" class="close-button" aria-label="Close settings">×</button>
-        </div>
-
-        <div class="form-group">
-          <label for="apiBaseUrl">Base URL</label>
-          <input id="apiBaseUrl" type="text" placeholder="https://api.openai.com/v1" />
-        </div>
-
-        <div class="form-group">
-          <label for="apiKey">API Key</label>
-          <input id="apiKey" type="password" placeholder="sk-..." />
-        </div>
-
-        <div class="form-group">
-          <label for="apiModel">Model</label>
-          <input id="apiModel" type="text" placeholder="gpt-4o-mini" />
-        </div>
-
-        <div class="form-actions">
-          <button class="secondary-btn" id="resetSettings">Reset</button>
-          <button class="primary-btn" id="saveSettings">Save</button>
-        </div>
+        <div class="modal-header"><h2 id="settingsTitle">Voyager API settings</h2><button id="closeSettings" class="close-button" aria-label="Close settings">×</button></div>
+        <div class="form-group"><label for="apiBaseUrl">Base URL</label><input id="apiBaseUrl" type="text" placeholder="https://api.openai.com/v1" /></div>
+        <div class="form-group"><label for="apiKey">API Key</label><input id="apiKey" type="password" placeholder="sk-..." /></div>
+        <div class="form-group"><label for="apiModel">Model</label><input id="apiModel" type="text" placeholder="gpt-4o-mini" /></div>
+        <div class="form-actions"><button class="secondary-btn" id="resetSettings">Reset</button><button class="primary-btn" id="saveSettings">Save</button></div>
       </div>
     </div>
-
     <script src="app.js"></script>
   </body>
 </html>
